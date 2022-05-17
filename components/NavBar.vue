@@ -9,7 +9,9 @@
       />
     </div>
     <input id="check" type="checkbox" class="nav-checkbtn" />
-    <label for="check" class="nav-hamburger"></label>
+    <label for="check" class="nav-hamburger">
+      <fa :icon="['fa', 'bars']" />
+    </label>
     <ul class="nav-links">
       <li><a class="active" href="#">Home</a></li>
       <li><a href="#">About</a></li>
@@ -27,23 +29,38 @@ export default {
 </script>
 
 <style scoped>
+.nav {
+  --nav-height: 80px;
+  --horizontal-padding: 35px;
+  display: flex;
+  height: var(--nav-height);
+  padding: 0 var(--horizontal-padding);
+  align-items: center;
+  justify-content: space-between;
+}
+
 .nav-links {
   display: none;
 }
 
 .nav-checkbtn[type='checkbox']:checked ~ .nav-links {
   display: block;
+  position: absolute;
+  height: calc(100vh - 80px);
+  font-size: 1rem;
+  color: black;
+  top: var(--nav-height);
+  padding: 0 var(--horizontal-padding);
+
+  background-color: aqua;
+}
+
+.nav-checkbtn {
+  display: none;
 }
 
 .nav-hamburger {
-  position: relative;
-}
-
-.nav-hamburger::after {
-  content: '';
-  position: absolute;
-  height: 5px;
-  width: 10px;
-  background-color: black;
+  font-size: 1.5rem;
+  justify-self: flex-end;
 }
 </style>
