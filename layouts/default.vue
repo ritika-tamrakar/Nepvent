@@ -1,9 +1,9 @@
 <template>
-  <div class="">helllo</div>
+  <Nuxt />
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'DefaultLayout',
 }
 </script>
