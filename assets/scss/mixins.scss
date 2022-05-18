@@ -26,8 +26,30 @@
   line-height: 44px;
   letter-spacing: -0.03em;
   text-align: left;
+  word-break: keep-all;
 
   color: map-get($map: $text, $key: dark-800);
+
+  @media (min-width: map-get($map: $breakpoints, $key: sm)) {
+    font-size: 45px;
+    font-weight: 800;
+    line-height: 65px;
+    letter-spacing: -0.03em;
+  }
+
+  @media (min-width: map-get($map: $breakpoints, $key: md)) {
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 70px;
+    letter-spacing: -0.03em;
+  }
+
+  @media (min-width: map-get($map: $breakpoints, $key: xl)) {
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 80px;
+    letter-spacing: -0.03em;
+  }
 }
 
 @mixin text-sub-400 {
@@ -37,4 +59,17 @@
   letter-spacing: -0.02em;
   text-align: left;
   color: map-get($map: $text, $key: dark-600);
+
+  @media (min-width: map-get($map: $breakpoints, $key: md)) {
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: map-get($map: $breakpoints, $key: xl)) {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: -0.02em;
+  }
 }

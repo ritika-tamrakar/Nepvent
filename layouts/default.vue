@@ -16,5 +16,6 @@ export default {
   @include font-family();
   max-width: 1360px;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 </style>

@@ -18,6 +18,17 @@
           alt="hero image"
           class="hero-pic"
         />
+
+        <img
+          src="~/assets/images/hero-pic-sub-1.svg"
+          alt=""
+          class="pic-sub-1"
+        />
+        <img
+          src="~/assets/images/hero-pic-sub-2.svg"
+          alt=""
+          class="pic-sub-2"
+        />
       </div>
     </div>
   </section>
@@ -83,16 +94,82 @@ export default {
 @media (min-width: map-get($map: $breakpoints, $key: md)) {
   .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: minmax(2rem, 2.25rem);
+    grid-template-columns: minmax(300px, 630px) minmax(400px, 600px);
+    gap: 2rem;
     justify-items: center;
+    font-size: 2rem;
+  }
+
+  .text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 1rem;
+
+    .subtitle {
+      margin-top: 1.5rem;
+    }
+
+    .cta-wrapper {
+      .cta {
+        padding: 1rem 2rem;
+        max-width: fit-content;
+        font-size: 1rem;
+        border-radius: 50px;
+      }
+    }
   }
 
   .img-wrapper {
     width: 100%;
+    padding-right: 2em;
+    display: flex;
+
+    flex-direction: column;
+    align-items: flex-end;
+    .hero-pic-container {
+      position: relative;
+    }
+
     .hero-pic {
-      width: 100%;
-      max-width: 500px;
+      width: 300px;
+    }
+
+    .pic-sub-1 {
+      width: 250px;
+      position: absolute;
+      top: 5rem;
+      left: -10rem;
+    }
+
+    .pic-sub-2 {
+      width: 250px;
+
+      position: absolute;
+      bottom: 0rem;
+      right: -7rem;
+    }
+
+    @media (min-width: map-get($map: $breakpoints, $key: xl)) {
+      .hero-pic {
+        width: 500px;
+      }
+
+      .pic-sub-1 {
+        width: 350px;
+        position: absolute;
+        top: 5rem;
+        left: -10rem;
+      }
+
+      .pic-sub-2 {
+        width: 350px;
+
+        position: absolute;
+        bottom: 0rem;
+        right: -7rem;
+      }
     }
   }
 }
