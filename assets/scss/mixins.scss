@@ -7,9 +7,15 @@
   );
 }
 
+@mixin container {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
 @mixin reset-btn {
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 @mixin padding-var {

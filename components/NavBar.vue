@@ -21,20 +21,23 @@
         <li><a href="#">Feedback</a></li>
       </div>
       <div class="nav-btn-wrapper">
-        <button class="nav-cta">Contact</button>
+        <NavBtn>Contact</NavBtn>
       </div>
     </ul>
   </nav>
 </template>
 
 <script>
+import NavBtn from './NavBtn.vue'
 export default {
   name: 'NavBar',
+  components: { NavBtn },
 }
 </script>
 
 <style lang="scss" scoped>
 .nav {
+  @include container();
   --nav-height: 80px;
   --horizontal-padding: 35px;
   display: flex;
@@ -45,28 +48,41 @@ export default {
 
   position: sticky;
   top: 0;
+  z-index: 9999;
 
   background-color: #fff;
 }
 
 .nav-links {
-  display: none;
-
+  /* display: none; */
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  top: -9999;
   a {
     text-decoration: none;
+    color: map-get($map: $text, $key: dark-600);
+
+    &:active {
+      color: map-get($map: $text, $key: active);
+    }
   }
 }
 
 .nav-checkbtn[type='checkbox']:checked ~ .nav-links {
+  height: auto;
+  opacity: 1;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   position: absolute;
-  width: calc(100vw - $container-p-h * 2);
-  height: calc(100vh - var(--nav-height) * 2);
+  width: calc(100vw - var(--horizontal-padding) * 2);
+  left: 0;
+  padding: var(--horizontal-padding);
   font-size: 1rem;
   top: var(--nav-height);
-  padding-top: var(--horizontal-padding);
+  height: 70vh;
   background-color: #fff;
 
   .links-wrapper {
@@ -77,10 +93,10 @@ export default {
 
   a {
     font-size: 1.75rem;
-    color: map-get($map: $text, $key: dark-600);
   }
 
   .nav-btn-wrapper {
+    margin-top: 4rem;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -105,6 +121,9 @@ export default {
   }
 
   .nav-links {
+    position: unset;
+    height: auto;
+    opacity: 1;
     display: grid;
     gap: 1rem;
     flex: 1;

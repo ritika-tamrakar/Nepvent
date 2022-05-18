@@ -14,7 +14,6 @@ export default {
 <style lang="scss" scoped>
 .container {
   @include font-family();
-
   overflow-x: hidden;
 }
 </style>

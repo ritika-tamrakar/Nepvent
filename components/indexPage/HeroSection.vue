@@ -1,48 +1,61 @@
 <template>
   <section class="container">
-    <div class="text-content">
-      <h2 class="title">Restaurant Management Like Clockwork</h2>
-      <p class="subtitle">
-        Fine-tune how your restaurant operates with Nepvent's Restaurant
-        Management System.
-      </p>
-
-      <div class="cta-wrapper">
-        <button class="cta">Get Started</button>
+    <bg-svg class="bg-svg" />
+    <div class="content-container">
+      <div class="text-content">
+        <h2 class="title">Restaurant Management Like Clockwork</h2>
+        <p class="subtitle">
+          Fine-tune how your restaurant operates with Nepvent's Restaurant
+          Management System.
+        </p>
+        <div class="cta-wrapper">
+          <button class="cta">Get Started</button>
+        </div>
       </div>
-    </div>
-    <div class="img-wrapper">
-      <div class="hero-pic-container">
-        <img
-          src="~/assets/images/hero-pic.png"
-          alt="hero image"
-          class="hero-pic"
-        />
-
-        <img
-          src="~/assets/images/hero-pic-sub-1.svg"
-          alt=""
-          class="pic-sub-1"
-        />
-        <img
-          src="~/assets/images/hero-pic-sub-2.svg"
-          alt=""
-          class="pic-sub-2"
-        />
+      <div class="img-wrapper">
+        <div class="hero-pic-container">
+          <img
+            src="~/assets/images/hero-pic.png"
+            alt="hero image"
+            class="hero-pic"
+          />
+          <img
+            src="~/assets/images/hero-pic-sub-1.svg"
+            alt=""
+            class="pic-sub-1"
+          />
+          <img
+            src="~/assets/images/hero-pic-sub-2.svg"
+            alt=""
+            class="pic-sub-2"
+          />
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import BgSvg from './BgSvg.vue'
 export default {
   name: 'HeroSection',
+  components: { BgSvg },
 }
 </script>
 
 <style lang="scss" scoped>
-.container {
+.content-container {
+  @include container();
   padding: 0 $container-p-h;
+}
+
+.container {
+  position: relative;
+  height: 700px;
+}
+.bg-svg {
+  position: absolute;
+  inset: 0;
 }
 
 .cta-wrapper {
@@ -88,16 +101,35 @@ export default {
     width: 100%;
     max-width: 400px;
   }
+
+  .hero-pic-container {
+    position: relative;
+  }
+  .pic-sub-1 {
+    width: 250px;
+    position: absolute;
+    top: 4rem;
+    left: -4.5rem;
+  }
+
+  .pic-sub-2 {
+    width: 250px;
+
+    position: absolute;
+    bottom: -2rem;
+    left: 7rem;
+  }
 }
 
 /* styles for screens > md breakpoint */
 @media (min-width: map-get($map: $breakpoints, $key: md)) {
-  .container {
+  .content-container {
     display: grid;
     grid-template-columns: minmax(300px, 630px) minmax(400px, 600px);
     gap: 2rem;
     justify-items: center;
     font-size: 2rem;
+    height: fit-content;
   }
 
   .text-content {
