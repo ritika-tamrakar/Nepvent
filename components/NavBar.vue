@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .nav {
   --nav-height: 80px;
   --horizontal-padding: 35px;
@@ -40,7 +40,11 @@ export default {
 }
 
 .nav-links {
-  display: none;
+  display: block;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .nav-checkbtn[type='checkbox']:checked ~ .nav-links {
