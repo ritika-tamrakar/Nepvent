@@ -1,0 +1,40 @@
+@mixin brand-gradient {
+  background: linear-gradient(
+    24.29deg,
+    #007be5 -2.04%,
+    #1790ea 42.15%,
+    #67d9fa 145.27%
+  );
+}
+
+@mixin reset-btn {
+  border: none;
+  outline: none;
+}
+
+@mixin padding-var {
+  --horizontal-padding: 35px;
+}
+
+@mixin font-family {
+  font-family: 'Manrope', sans-serif;
+}
+
+@mixin text-title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 44px;
+  letter-spacing: -0.03em;
+  text-align: left;
+
+  color: map-get($map: $text, $key: dark-800);
+}
+
+@mixin text-sub-400 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: map-get($map: $text, $key: dark-600);
+}

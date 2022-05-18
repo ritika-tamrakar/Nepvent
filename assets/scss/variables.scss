@@ -1,0 +1,26 @@
+$container-p-h: 35px;
+
+$colors: (
+  'primary': #007be5,
+  'secondary': #67d9fa,
+  'highlight': #fe9376,
+);
+
+$text: (
+  'dark-800': #092128,
+  'dark-600': #2e3d42,
+  'light-300': #f0f5f9,
+);
+
+$breakpoints: (
+  'xs': 450px,
+  'sm': 640px,
+
+  'md': 768px,
+
+  'lg': 1024px,
+
+  'xl': 1280px,
+
+  '2xl': 1536px,
+);

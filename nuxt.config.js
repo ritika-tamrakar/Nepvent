@@ -29,7 +29,10 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/fontawesome',
+    // for scss
     '@nuxtjs/style-resources',
+    // for google fonts
+    '@nuxtjs/google-fonts',
   ],
 
   styleResources: {
@@ -48,12 +51,23 @@ export default {
     baseURL: '/',
   },
 
+  // fontawsome
   fontawesome: {
     component: 'Fa',
     suffix: false,
     icons: {
       solid: true,
       brands: true,
+    },
+  },
+
+  // google fonts
+  googleFonts: {
+    families: {
+      Manrope: {
+        wght: [300, 400, 700, 800],
+        ital: [400],
+      },
     },
   },
 
