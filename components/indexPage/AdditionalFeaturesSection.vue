@@ -68,7 +68,7 @@ export default {
   }
   .f-cards-wrapper {
     margin-top: 1.76rem;
-    padding: 1rem;
+    padding: 3rem 1rem 4.5rem 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
