@@ -3,7 +3,9 @@
     <h4 class="card-title">
       {{ title }}
     </h4>
-    <div class="card-icon-wrapper">icon</div>
+    <div class="card-icon-wrapper">
+      <fa :icon="icon" />
+    </div>
     <p class="card-desc">
       {{ description }}
     </p>
@@ -21,6 +23,10 @@ export default {
     description: {
       type: String,
       default: '',
+    },
+    icon: {
+      type: Array,
+      default: () => ['fa', 'spinner'],
     },
   },
 }
@@ -59,6 +65,10 @@ export default {
     text-align: center;
     color: map-get($map: $text, $key: dark-600);
     max-width: 232px;
+  }
+  .card-icon-wrapper {
+    font-size: 2rem;
+    color: #000;
   }
 }
 </style>

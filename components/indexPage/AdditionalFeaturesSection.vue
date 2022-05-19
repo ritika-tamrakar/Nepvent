@@ -12,6 +12,7 @@
         :key="index"
         :title="card.title"
         :description="card.desc"
+        :icon="card.icon"
       />
     </div>
   </section>
@@ -28,17 +29,17 @@ export default {
         {
           title: 'Order Management',
           desc: 'Manage all your kitchen/bar orders from a single device with timely notifications for new/completed ones.',
-          icon: '',
+          icon: ['fa', 'sliders'],
         },
         {
           title: 'Analytics',
           desc: "Find visual reports of your restaurant's sales & inventory totals to uncover critical problems and what's causing them.",
-          icon: '',
+          icon: ['fa', 'chart-line'],
         },
         {
           title: 'Great Support',
           desc: 'With our support team available all week long during business hours, you can operate without any concern.',
-          icon: '',
+          icon: ['fa', 'headset'],
         },
       ],
     }
@@ -50,7 +51,7 @@ export default {
 .feature-container {
   @include container();
 
-  margin-top: 6.25rem;
+  margin-top: 5.25rem;
 
   padding: 0 var(--horizontal-padding);
   text-align: center;
