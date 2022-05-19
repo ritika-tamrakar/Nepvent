@@ -39,10 +39,9 @@ export default {
 .nav {
   @include container();
   --nav-height: 80px;
-  --horizontal-padding: 35px;
   display: flex;
   height: var(--nav-height);
-  padding: 0 $container-p-h;
+  padding: 0 var(--horizontal-padding);
   align-items: center;
   justify-content: space-between;
 

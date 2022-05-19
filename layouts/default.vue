@@ -14,6 +14,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   @include font-family();
+  @include padding-var();
 
   overflow-x: hidden;
 }

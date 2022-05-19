@@ -1,34 +1,36 @@
 <template>
   <section class="container">
-    <bg-svg class="bg-svg" />
-    <div class="content-container">
-      <div class="text-content">
-        <h2 class="title">Restaurant Management Like Clockwork</h2>
-        <p class="subtitle">
-          Fine-tune how your restaurant operates with Nepvent's Restaurant
-          Management System.
-        </p>
-        <div class="cta-wrapper">
-          <button class="cta">Get Started</button>
+    <div class="hide-overflow">
+      <bg-svg class="bg-svg" />
+      <div class="content-container">
+        <div class="text-content">
+          <h2 class="title">Restaurant Management Like Clockwork</h2>
+          <p class="subtitle">
+            Fine-tune how your restaurant operates with Nepvent's Restaurant
+            Management System.
+          </p>
+          <div class="cta-wrapper">
+            <button class="cta">Get Started</button>
+          </div>
         </div>
-      </div>
-      <div class="img-wrapper">
-        <div class="hero-pic-container">
-          <img
-            src="~/assets/images/hero-pic.png"
-            alt="hero image"
-            class="hero-pic"
-          />
-          <img
-            src="~/assets/images/hero-pic-sub-1.svg"
-            alt=""
-            class="pic-sub-1"
-          />
-          <img
-            src="~/assets/images/hero-pic-sub-2.svg"
-            alt=""
-            class="pic-sub-2"
-          />
+        <div class="img-wrapper">
+          <div class="hero-pic-container">
+            <img
+              src="~/assets/images/hero-pic.png"
+              alt="hero image"
+              class="hero-pic"
+            />
+            <img
+              src="~/assets/images/hero-pic-sub-1.svg"
+              alt=""
+              class="pic-sub-1"
+            />
+            <img
+              src="~/assets/images/hero-pic-sub-2.svg"
+              alt=""
+              class="pic-sub-2"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -46,16 +48,19 @@ export default {
 <style lang="scss" scoped>
 .content-container {
   @include container();
-  padding: 0 $container-p-h;
+  padding: 0 var(--horizontal-padding);
 }
 
 .container {
   position: relative;
-  height: 700px;
+  height: auto;
+}
+.hide-overflow {
+  overflow: hidden;
 }
 .bg-svg {
   position: absolute;
-  inset: 0;
+  bottom: 0px;
 }
 
 .cta-wrapper {
