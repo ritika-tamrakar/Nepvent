@@ -77,11 +77,12 @@ export default {
 }
 
 .content-container {
-  padding: 50px 10px;
+  padding: 50px var(--horizontal-padding);
 
   .logo-tag-line {
     display: block;
     margin-top: 30px;
+    max-width: calc(100% - var(--horizontal-padding));
   }
 
   .contact-info {
@@ -131,7 +132,7 @@ export default {
 }
 
 .qr-container {
-  padding: 50px 10px;
+  padding: 50px var(--horizontal-padding);
 
   .qr-title {
     font-size: 2rem;

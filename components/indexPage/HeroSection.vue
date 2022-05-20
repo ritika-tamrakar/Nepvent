@@ -61,6 +61,7 @@ export default {
 .bg-svg {
   position: absolute;
   bottom: 0px;
+  z-index: -1;
 }
 
 .cta-wrapper {

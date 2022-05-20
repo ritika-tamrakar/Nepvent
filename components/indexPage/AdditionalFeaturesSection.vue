@@ -1,28 +1,31 @@
 <template>
-  <section class="feature-container">
-    <h2 class="f-title">Additional Features</h2>
-    <p class="f-desc">
-      While it looks like your average POS system on the surface, our RMS comes
-      with all the gadgetry your restaurant could need.
-    </p>
-
-    <div class="f-cards-wrapper">
-      <IconCards
-        v-for="(card, index) in cards"
-        :key="index"
-        :title="card.title"
-        :description="card.desc"
-        :icon="card.icon"
-      />
+  <section class="container">
+    <BgSvgSlanted class="bg-svg" />
+    <div class="feature-container">
+      <h2 class="f-title">Additional Features</h2>
+      <p class="f-desc">
+        While it looks like your average POS system on the surface, our RMS
+        comes with all the gadgetry your restaurant could need.
+      </p>
+      <div class="f-cards-wrapper">
+        <IconCards
+          v-for="(card, index) in cards"
+          :key="index"
+          :title="card.title"
+          :description="card.desc"
+          :icon="card.icon"
+        />
+      </div>
     </div>
   </section>
 </template>
 
 <script>
 import IconCards from './IconCards.vue'
+import BgSvgSlanted from './BgSvgSlanted.vue'
 export default {
   name: 'AdditionalFeaturesSection',
-  components: { IconCards },
+  components: { IconCards, BgSvgSlanted },
   data() {
     return {
       cards: [
@@ -48,6 +51,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  position: relative;
+  overflow-x: hidden;
+
+  .bg-svg {
+    position: absolute;
+    left: 1rem;
+    bottom: 0px;
+    z-index: -1;
+  }
+}
 .feature-container {
   @include container();
 

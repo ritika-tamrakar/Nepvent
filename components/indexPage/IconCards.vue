@@ -41,10 +41,12 @@ export default {
   padding: 2.5rem 2.25rem;
   gap: 19px;
 
+  background-color: #fff;
+
   border-radius: 0.8rem;
 
   max-width: 322px;
-  min-width: 280px;
+  min-width: 250px;
 
   box-shadow: 0px 13.399999618530273px 13px 0px hsla(242, 53%, 43%, 0.04),
     0px 25.80740737915039px 25.481481552124023px 0px hsla(242, 53%, 43%, 0.04),
