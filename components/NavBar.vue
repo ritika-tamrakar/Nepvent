@@ -1,24 +1,25 @@
 <template>
   <nav class="nav">
     <div class="nav-logo">
-      <img
-        class="nav-logo-img"
-        src="https://res.cloudinary.com/dudbkhnf3/image/upload/v1633346809/nepvent-company-site/logo.png"
-        alt="Nepvent"
-        width="150"
-      />
+      <nuxt-link to="/">
+        <img
+          class="nav-logo-img"
+          src="https://res.cloudinary.com/dudbkhnf3/image/upload/v1633346809/nepvent-company-site/logo.png"
+          alt="Nepvent"
+          width="150"
+        />
+      </nuxt-link>
     </div>
     <input id="check" type="checkbox" class="nav-checkbtn" />
-    <label for="check" class="nav-hamburger">
-      <fa :icon="['fa', 'bars']" />
+    <label for="check" class="nav-hamburger" @click="toggleHamburger()">
+      <fa v-if="showHamburger" :icon="['fa', 'bars']" />
+      <fa v-else :icon="['fa', 'xmark']" />
     </label>
     <ul class="nav-links">
       <div class="links-wrapper">
-        <li><a class="active" href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Feedback</a></li>
+        <li><nuxt-link to="/features">Features</nuxt-link></li>
+        <li><nuxt-link to="/blog">Blog</nuxt-link></li>
+        <li><a href="#">Clients</a></li>
       </div>
       <div class="nav-btn-wrapper">
         <NavBtn>Contact</NavBtn>
@@ -32,6 +33,14 @@ import NavBtn from './NavBtn.vue'
 export default {
   name: 'NavBar',
   components: { NavBtn },
+  data() {
+    return { showHamburger: true }
+  },
+  methods: {
+    toggleHamburger() {
+      this.showHamburger = !this.showHamburger
+    },
+  },
 }
 </script>
 
