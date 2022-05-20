@@ -1,6 +1,6 @@
 <template>
   <nav class="nav">
-    <div class="nav-logo">
+    <div class="nav-logo" @click="toggleHamburger()">
       <nuxt-link to="/">
         <img
           class="nav-logo-img"
@@ -10,16 +10,24 @@
         />
       </nuxt-link>
     </div>
-    <input id="check" type="checkbox" class="nav-checkbtn" />
+    <input
+      id="check"
+      type="checkbox"
+      :class="[showNav ? 'nav-checkbtn checked' : 'nav-checkbtn']"
+    />
     <label for="check" class="nav-hamburger" @click="toggleHamburger()">
       <fa v-if="showHamburger" :icon="['fa', 'bars']" />
       <fa v-else :icon="['fa', 'xmark']" />
     </label>
     <ul class="nav-links">
       <div class="links-wrapper">
-        <li><nuxt-link to="/features">Features</nuxt-link></li>
-        <li><nuxt-link to="/blog">Blog</nuxt-link></li>
-        <li><a href="#">Clients</a></li>
+        <li @click="toggleHamburger()">
+          <nuxt-link to="/features">Features</nuxt-link>
+        </li>
+        <li @click="toggleHamburger()">
+          <nuxt-link to="/blog">Blog</nuxt-link>
+        </li>
+        <li @click="toggleHamburger()"><a href="#">Clients</a></li>
       </div>
       <div class="nav-btn-wrapper">
         <NavBtn>Contact</NavBtn>
@@ -34,11 +42,15 @@ export default {
   name: 'NavBar',
   components: { NavBtn },
   data() {
-    return { showHamburger: true }
+    return { showHamburger: true, showNav: false }
   },
   methods: {
     toggleHamburger() {
       this.showHamburger = !this.showHamburger
+      this.toggleNav()
+    },
+    toggleNav() {
+      this.showNav = !this.showNav
     },
   },
 }
@@ -78,7 +90,7 @@ export default {
   }
 }
 
-.nav-checkbtn[type='checkbox']:checked ~ .nav-links {
+.nav-checkbtn[type='checkbox'].checked ~ .nav-links {
   height: auto;
   opacity: 1;
   display: flex;
