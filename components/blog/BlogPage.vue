@@ -1,5 +1,8 @@
 <template>
-  <div class="blog-styles" v-html="cleanMessage()"></div>
+  <div class="blog-page">
+    <div class="blog-social-icon-bar">social icons</div>
+    <div class="blog-styles" v-html="cleanMessage()"></div>
+  </div>
 </template>
 
 <script>
@@ -20,6 +23,18 @@ export default {
 </script>
 
 <style lang="scss">
+.blog-page {
+  position: relative;
+  .blog-social-icon-bar {
+    background-color: red;
+    width: 60px;
+    height: 172px;
+    position: absolute;
+    top: 20%;
+    transform: translate(-150%, -50%);
+  }
+}
+
 .blog-styles {
   font-size: 16px;
   padding: 2em 0;
@@ -33,8 +48,9 @@ export default {
   }
 
   h1 {
-    font-size: 1.8em;
+    font-size: 1.7em;
     text-transform: uppercase;
+    line-height: 1.3em;
   }
 
   h2 {
@@ -91,8 +107,10 @@ export default {
     img {
       max-width: 760px;
       max-height: 500px;
+      width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
     }
   }
 
