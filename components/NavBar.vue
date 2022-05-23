@@ -1,6 +1,6 @@
 <template>
   <nav class="nav">
-    <div class="nav-logo" @click="toggleHamburger()">
+    <div class="nav-logo">
       <nuxt-link to="/">
         <img
           class="nav-logo-img"
@@ -74,12 +74,13 @@ export default {
 }
 
 .nav-links {
-  /* display: none; */
+  display: none;
   width: 0;
   height: 0;
   opacity: 0;
   position: absolute;
-  top: -9999;
+
+  cursor: none;
   a {
     text-decoration: none;
     color: map-get($map: $text, $key: dark-600);
