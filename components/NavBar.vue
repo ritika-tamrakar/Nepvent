@@ -99,12 +99,12 @@ export default {
     flex-direction: column;
     gap: 2rem;
     position: absolute;
-    width: calc(100vw - var(--horizontal-padding) * 2);
+    width: 100vw;
     left: 0;
     padding: var(--horizontal-padding);
     font-size: 1rem;
     top: var(--nav-height);
-    height: 70vh;
+    height: calc(100vh - var(--nav-height));
     background-color: #fff;
 
     .links-wrapper {
