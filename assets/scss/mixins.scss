@@ -1,3 +1,14 @@
+// for media queries
+@mixin mq($key) {
+  $size: map-get(
+    $map: $breakpoints,
+    $key: $key,
+  );
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
 @mixin brand-gradient {
   background: linear-gradient(
     24.29deg,
