@@ -21,6 +21,7 @@ export default {
   plugins: [
     { src: '~/plugins/vue-lazyload', ssr: false },
     '~/plugins/vue-sanitize.js',
+    { src: '~/plugins/vue-carousel.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
