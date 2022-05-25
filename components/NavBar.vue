@@ -27,7 +27,9 @@
         <li @click="toggleHamburger()">
           <nuxt-link to="/blog">Blog</nuxt-link>
         </li>
-        <li @click="toggleHamburger()"><a href="#">Clients</a></li>
+        <li @click="toggleHamburger()">
+          <nuxt-link to="/clients">Clients</nuxt-link>
+        </li>
       </div>
       <div class="nav-btn-wrapper">
         <NavBtn>Contact</NavBtn>
