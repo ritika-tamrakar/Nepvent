@@ -11,7 +11,6 @@
 import HeroSection from '../components/indexPage/HeroSection.vue'
 import StatView from '../components/indexPage/StatView.vue'
 import AdditionalFeaturesSection from '../components/indexPage/AdditionalFeaturesSection.vue'
-import TestimonialsSection from '../client-side-components/TestimonialsSection.vue'
 
 export default {
   name: 'IndexPage',
@@ -19,7 +18,8 @@ export default {
     HeroSection,
     StatView,
     AdditionalFeaturesSection,
-    TestimonialsSection,
+    TestimonialsSection: () =>
+      import('../components/indexPage/TestimonialsSection.client.vue'),
   },
 }
 </script>

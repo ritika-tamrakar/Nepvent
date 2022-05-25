@@ -37,6 +37,7 @@
 import BareQuotes from './BareQuotes.vue'
 import StarSvg from './StarSvg.vue'
 export default {
+  components: { BareQuotes, StarSvg },
   props: {
     clientName: {
       type: String,
@@ -55,7 +56,6 @@ export default {
       default: 5,
     },
   },
-  components: { BareQuotes, StarSvg },
 }
 </script>
 
@@ -103,9 +103,12 @@ $border-radius: 1rem;
   margin-bottom: 3rem;
   border-radius: $border-radius;
   background-color: map-get($map: $colors, $key: light-300);
-  filter: drop-shadow(0px 67px 80px rgba(55, 52, 169, 0.07))
-    drop-shadow(0px 25.8074px 25.4815px rgba(55, 52, 169, 0.0425185))
-    drop-shadow(0px 13.4px 13px rgba(55, 52, 169, 0.035));
+
+  @include mq(md) {
+    filter: drop-shadow(0px 67px 80px rgba(55, 52, 169, 0.07))
+      drop-shadow(0px 25.8074px 25.4815px rgba(55, 52, 169, 0.0425185))
+      drop-shadow(0px 13.4px 13px rgba(55, 52, 169, 0.035));
+  }
   .quotes-decor {
     position: absolute;
     width: 1.5rem;
@@ -119,15 +122,15 @@ $border-radius: 1rem;
     display: none;
     @include mq(xs) {
       display: inline;
+      color: map-get($map: $text, $key: light-300);
+      position: absolute;
+      bottom: 1.5rem;
+      left: 2rem;
+      z-index: 2;
+      font-weight: 700;
+      font-size: 1.125rem;
+      line-height: 1.2em;
     }
-    color: map-get($map: $text, $key: light-300);
-    position: relative;
-    top: 1.2rem;
-    left: 2rem;
-    z-index: 2;
-    font-weight: 700;
-    font-size: 1.125rem;
-    line-height: 1.2em;
     @include mq(md) {
       font-size: 23.0872px;
       line-height: 28px;

@@ -7,18 +7,20 @@
       <QuotesSvg class="quotes-svg" />
 
       <client-only placeholder="...loading">
-        <Carousel>
+        <Carousel per-page="1" autoplay autoplay-hover-pause>
           <Slide
             v-for="(
               { clientName, businessName, testimonial }, index
             ) in testimonials"
             :key="index"
           >
-            <TestimonialCard
-              :client-name="clientName"
-              :business-name="businessName"
-              :testimonial="testimonial"
-            />
+            <div class="card-wrapper">
+              <TestimonialCard
+                :client-name="clientName"
+                :business-name="businessName"
+                :testimonial="testimonial"
+              />
+            </div>
           </Slide>
         </Carousel>
       </client-only>
@@ -27,15 +29,36 @@
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel'
-import TestimonialCard from '../components/indexPage/TestimonialCard.vue'
-import QuotesSvg from '../components/indexPage/QuotesSvg.vue'
-
+import TestimonialCard from './TestimonialCard.vue'
+import QuotesSvg from './QuotesSvg.vue'
 export default {
-  components: { TestimonialCard, Carousel, Slide, QuotesSvg },
+  components: {
+    TestimonialCard,
+    Carousel: () => import('vue-carousel').then((el) => el.Carousel),
+    Slide: () => import('vue-carousel').then((el) => el.Slide),
+    QuotesSvg,
+  },
   data() {
     return {
       testimonials: [
+        {
+          clientName: 'Bhawani Silakar',
+          businessName: 'Morrison Cafe',
+          testimonial:
+            'Initially, I was skeptical about using a relatively young product as compared to other big players. But now I find it very efficient, simple and well built.',
+        },
+        {
+          clientName: 'Bhawani Silakar',
+          businessName: 'Morrison Cafe',
+          testimonial:
+            'Initially, I was skeptical about using a relatively young product as compared to other big players. But now I find it very efficient, simple and well built.',
+        },
+        {
+          clientName: 'Bhawani Silakar',
+          businessName: 'Morrison Cafe',
+          testimonial:
+            'Initially, I was skeptical about using a relatively young product as compared to other big players. But now I find it very efficient, simple and well built.',
+        },
         {
           clientName: 'Bhawani Silakar',
           businessName: 'Morrison Cafe',
@@ -54,6 +77,12 @@ export default {
   @include container();
 
   padding: 2rem var(--horizontal-padding);
+
+  .card-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3rem;
+  }
 
   .section-tag {
     text-transform: uppercase;
