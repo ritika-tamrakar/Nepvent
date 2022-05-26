@@ -28,6 +28,7 @@
     "vue-sanitize": "^0.2.2",
     "vue-select": "^3.18.3",
     "vue-server-renderer": "^2.6.14",
+    "vue-social-sharing": "^3.0.9",
     "vue-template-compiler": "^2.6.14",
     "webpack": "^4.46.0"
   },

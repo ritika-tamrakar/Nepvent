@@ -1,7 +1,55 @@
 <template>
   <div class="blog-page">
-    <div class="blog-social-icon-bar">social icons</div>
-    <div class="blog-styles" v-html="cleanMessage()"></div>
+    <div class="blog-social-icon-bar">
+      <ShareNetwork
+        class="social-links"
+        network="facebook"
+        url="https://news.vuejs.org/issues/180"
+        title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+        description="This week, I'd like to introduce you to 'Vite', which means 'Fast'. It's a brand new development setup created by Evan You."
+        quote="The hot reload is so fast it\'s near instant. - Evan You"
+        hashtags="vuejs,vite"
+      >
+        <fa :icon="['fa-brands', 'facebook-square']" />
+      </ShareNetwork>
+
+      <ShareNetwork
+        class="social-links"
+        network="twitter"
+        url="https://news.vuejs.org/issues/180"
+        title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+        description="This week, I'd like to introduce you to 'Vite', which means 'Fast'. It's a brand new development setup created by Evan You."
+        quote="The hot reload is so fast it\'s near instant. - Evan You"
+        hashtags="vuejs,vite"
+      >
+        <fa :icon="['fa-brands', 'twitter-square']" />
+      </ShareNetwork>
+      <ShareNetwork
+        class="social-links"
+        network="whatsapp"
+        url="https://news.vuejs.org/issues/180"
+        title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+        description="This week, I'd like to introduce you to 'Vite', which means 'Fast'. It's a brand new development setup created by Evan You."
+        quote="The hot reload is so fast it\'s near instant. - Evan You"
+        hashtags="vuejs,vite"
+      >
+        <fa :icon="['fa-brands', 'whatsapp-square']" />
+      </ShareNetwork>
+    </div>
+    <article class="blog-content">
+      <header class="hero-content">
+        <h6 class="created-time">{{ createdAt }}</h6>
+
+        <h1 class="blog-title">{{ title }}</h1>
+
+        <div class="hero-pic-wrapper">
+          <img :src="heroPic" :alt="title" class="hero-pic" />
+        </div>
+
+        <span class="read-time">{{ readTime }}</span>
+      </header>
+      <main class="blog-styles" v-html="cleanMessage()"></main>
+    </article>
   </div>
 </template>
 
@@ -10,6 +58,26 @@ export default {
   name: 'BlogPage',
   props: {
     htmlString: {
+      type: String,
+      default: '',
+    },
+    readTime: {
+      type: String,
+      default: '',
+    },
+    createdAt: {
+      type: String,
+      default: '',
+    },
+    description: {
+      type: String,
+      default: '',
+    },
+    heroPic: {
+      type: String,
+      default: '',
+    },
+    title: {
       type: String,
       default: '',
     },
@@ -26,33 +94,35 @@ export default {
 .blog-page {
   position: relative;
   .blog-social-icon-bar {
-    background-color: red;
+    display: flex;
+    font-size: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     width: 60px;
-    height: 172px;
     position: absolute;
-    top: 20%;
+    top: 25%;
     transform: translate(-150%, -50%);
+    .social-links {
+      text-decoration: none;
+      @include color($text, dark-600);
+    }
   }
 }
 
 .blog-styles {
   font-size: 16px;
-  padding: 2em 0;
+  padding: 1em 0;
   h1,
   h2,
   h3,
   h4 {
     font-weight: 700;
-    padding: 0.6em 0;
-    line-height: 1.5em;
+    padding: 0.3em 0;
+    line-height: 1.2em;
   }
 
-  h1 {
-    font-size: 1.7em;
-    text-transform: uppercase;
-    line-height: 1.3em;
-  }
-
+  h1,
   h2 {
     font-size: 1.5em;
   }
@@ -72,7 +142,7 @@ export default {
   }
 
   @media (min-width: map-get($map: $breakpoints, $key: md)) {
-    padding: 3em 0;
+    padding: 1em 0;
     h1 {
       font-size: 2.5em;
     }
