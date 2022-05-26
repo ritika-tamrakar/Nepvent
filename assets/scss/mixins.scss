@@ -8,6 +8,10 @@
     @content;
   }
 }
+// for choosing colors
+@mixin color($map, $key) {
+  color: map-get($map: $map, $key: $key);
+}
 
 @mixin brand-gradient {
   background: linear-gradient(

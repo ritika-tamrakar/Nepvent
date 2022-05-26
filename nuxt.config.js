@@ -22,6 +22,7 @@ export default {
     { src: '~/plugins/vue-lazyload', ssr: false },
     '~/plugins/vue-sanitize.js',
     { src: '~/plugins/vue-carousel.js', mode: 'client' },
+    '~/plugins/vue-select.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -73,6 +74,9 @@ export default {
       Manrope: {
         wght: [300, 400, 700, 800],
         ital: [400],
+      },
+      RobotoMono: {
+        wght: [300, 500, 700],
       },
     },
   },
