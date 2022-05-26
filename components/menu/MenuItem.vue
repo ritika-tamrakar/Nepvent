@@ -23,7 +23,6 @@ export default {
     imgUrl: { default: '', type: String },
     dishName: { default: '', type: String },
     description: { default: '', type: String },
-
     price: { default: '', type: String },
   },
 }
@@ -31,6 +30,11 @@ export default {
 
 <style lang="scss" scoped>
 .card-wrapper {
+  margin-top: 2rem;
+  @include mq(md) {
+    display: flex;
+    gap: 1rem;
+  }
   .img-wrapper {
     max-width: 128px;
     overflow: hidden;
@@ -50,6 +54,10 @@ export default {
       font-size: 18px;
       line-height: 148.1%;
 
+      @include mq(md) {
+        margin-top: 0rem;
+      }
+
       letter-spacing: 0.095em;
     }
 
@@ -63,13 +71,17 @@ export default {
     }
 
     .price-tag {
+      display: flex;
+      justify-content: flex-end;
       font-weight: 300;
       font-size: 14px;
       line-height: 148.1%;
       letter-spacing: 0.06em;
       @include color($text, dark-600);
-
+      padding-top: 10px;
+      margin-left: auto;
       .price-icon {
+        margin-right: 0.5rem;
         @include color($colors, secondary);
         & > svg {
           transform: rotate(20.39deg);

@@ -32,7 +32,9 @@
         </li>
       </div>
       <div class="nav-btn-wrapper">
-        <NavBtn>Contact</NavBtn>
+        <a href="tel:9779818000015" class="contact-link">
+          <NavBtn> Contact </NavBtn>
+        </a>
       </div>
     </ul>
   </nav>

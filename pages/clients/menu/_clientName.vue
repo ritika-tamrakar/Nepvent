@@ -68,6 +68,31 @@ export default {
             'Mildly spiced mashed potatoes, mixed with peas, vegetables and shallow fried',
           price: '325',
         },
+
+        {
+          imgUrl:
+            'https://ouch-cdn2.icons8.com/pXA1znY1Yt4-oyZjovbQz6Xu0p51Ajeb4ZFI1htTxfc/rs:fit:256:140/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTgz/L2MzNTA0MzFmLTM0/OWUtNDBhYy05ZWZh/LTViYTE5OGMyY2Ri/Mi5wbmc.png',
+          dishName: 'Timmur Aaloo Tareko',
+          description:
+            'Mildly spiced mashed potatoes, mixed with peas, vegetables and shallow fried',
+          price: '325',
+        },
+        {
+          imgUrl:
+            'https://ouch-cdn2.icons8.com/pXA1znY1Yt4-oyZjovbQz6Xu0p51Ajeb4ZFI1htTxfc/rs:fit:256:140/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTgz/L2MzNTA0MzFmLTM0/OWUtNDBhYy05ZWZh/LTViYTE5OGMyY2Ri/Mi5wbmc.png',
+          dishName: 'Timmur Aaloo Tareko',
+          description:
+            'Mildly spiced mashed potatoes, mixed with peas, vegetables and shallow fried',
+          price: '325',
+        },
+        {
+          imgUrl:
+            'https://ouch-cdn2.icons8.com/pXA1znY1Yt4-oyZjovbQz6Xu0p51Ajeb4ZFI1htTxfc/rs:fit:256:140/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTgz/L2MzNTA0MzFmLTM0/OWUtNDBhYy05ZWZh/LTViYTE5OGMyY2Ri/Mi5wbmc.png',
+          dishName: 'Timmur Aaloo Tareko',
+          description:
+            'Mildly spiced mashed potatoes, mixed with peas, vegetables and shallow fried',
+          price: '325',
+        },
       ],
     }
   },
