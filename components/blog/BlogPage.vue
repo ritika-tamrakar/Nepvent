@@ -92,20 +92,38 @@ export default {
 
 <style lang="scss">
 .blog-page {
-  position: relative;
-  .blog-social-icon-bar {
+  @include mq(md) {
     display: flex;
-    font-size: 1.5rem;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    width: 60px;
-    position: absolute;
-    top: 25%;
-    transform: translate(-150%, -50%);
-    .social-links {
-      text-decoration: none;
-      @include color($text, dark-600);
+    gap: 2rem;
+  }
+
+  .blog-social-icon-bar {
+    display: none;
+    @include mq(md) {
+      display: flex;
+      font-size: 1.5rem;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 25%;
+      .social-links {
+        text-decoration: none;
+        @include color($text, dark-600);
+      }
+    }
+  }
+}
+
+.hero-content {
+  .hero-pic-wrapper {
+    overflow: hidden;
+    max-width: 760px;
+    max-height: 500px;
+    .hero-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   }
 }
