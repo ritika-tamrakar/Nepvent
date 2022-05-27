@@ -1,34 +1,38 @@
 <template>
-  <div class="card-wrapper">
-    <div class="content-wrapper">
-      <BareQuotes class="quotes-decor" />
-      <p class="testimonial">
-        {{ testimonial }}
-      </p>
-      <div class="text-wrapper">
-        <div class="inner-content">
-          <div class="review-wrapper">
-            <StarSvg v-for="(_, index) in Array(noOfStars)" :key="index" />
+  <div class="card-container">
+    <div class="img-wrapper">
+      <img :src="imgUrl" :alt="clientName" class="card-img" />
+    </div>
+    <div class="card-wrapper">
+      <div class="content-wrapper">
+        <BareQuotes class="quotes-decor" />
+        <p class="testimonial">
+          {{ testimonial }}
+        </p>
+        <div class="text-wrapper">
+          <div class="inner-content">
+            <div class="review-wrapper">
+              <StarSvg v-for="(_, index) in Array(noOfStars)" :key="index" />
+            </div>
+            <h3 class="client-name">{{ clientName }}</h3>
+            <p class="business-name">{{ businessName }}</p>
           </div>
-          <h3 class="client-name">{{ clientName }}</h3>
-          <p class="business-name">{{ businessName }}</p>
         </div>
       </div>
-    </div>
-
-    <span class="business-name-decor">{{ businessName }}</span>
-    <div class="custom-shape-divider-top-1653389732">
-      <svg
-        data-name="Layer 1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1200 120"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-          class="shape-fill"
-        ></path>
-      </svg>
+      <span class="business-name-decor">{{ businessName }}</span>
+      <div class="custom-shape-divider-top-1653389732">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
     </div>
   </div>
 </template>
@@ -47,6 +51,10 @@ export default {
       type: String,
       default: '',
     },
+    imgUrl: {
+      type: String,
+      default: '',
+    },
     testimonial: {
       type: String,
       default: '',
@@ -61,6 +69,28 @@ export default {
 
 <style lang="scss" scoped>
 $border-radius: 1rem;
+
+.card-container {
+  @include mq(md) {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  margin-top: 2rem;
+  .img-wrapper {
+    max-width: 450px;
+
+    @include mq(md) {
+      margin-right: -13rem;
+    }
+    overflow: hidden;
+    z-index: -1;
+
+    .card-img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}
 .custom-shape-divider-top-1653389732 {
   position: absolute;
   bottom: 0;
@@ -93,7 +123,7 @@ $border-radius: 1rem;
   fill: #007be5;
 }
 .card-wrapper {
-  max-width: 750px;
+  max-width: 550px;
   position: relative;
   margin-top: 1.9rem;
   padding-bottom: 1rem;
