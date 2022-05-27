@@ -7,7 +7,12 @@
       <QuotesSvg class="quotes-svg" />
 
       <client-only placeholder="...loading">
-        <Carousel per-page="1" autoplay autoplay-hover-pause>
+        <Carousel
+          :per-page="1"
+          autoplay
+          autoplay-hover-pause
+          :navigation-enabled="true"
+        >
           <Slide
             v-for="(
               { clientName, businessName, testimonial }, index
