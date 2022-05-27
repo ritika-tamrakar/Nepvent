@@ -4,42 +4,96 @@
     <span class="close-btn">
       <fa :icon="['fa', 'xmark']" />
     </span>
-    <form action="" class="form">
+    <form action="" class="form" @submit.prevent="handleSubmit">
       <div class="inputs-wrapper">
         <div class="input-wrapper">
           <label for="name" class="input-title">Name</label>
           <input
             id="name"
+            v-model="values.name"
+            required
             type="text"
             class="form-input"
             placeholder="Your Name"
           />
         </div>
         <div class="input-wrapper">
-          <label for="name" class="input-title">Name</label>
+          <label for="email" class="input-title">Email</label>
           <input
-            id="name"
-            type="text"
+            id="email"
+            v-model="values.email"
+            required
+            type="email"
             class="form-input"
-            placeholder="Your Name"
+            placeholder="Your Email"
           />
         </div>
         <div class="input-wrapper">
-          <label for="name" class="input-title">Name</label>
+          <label for="phone" class="input-title">Mobile Number</label>
           <input
-            id="name"
-            type="text"
+            id="phone"
+            v-model="values.phone"
+            required
+            type="number"
             class="form-input"
-            placeholder="Your Name"
+            placeholder="Your Mobile No"
           />
         </div>
+        <div class="input-wrapper">
+          <label for="restaurant" class="input-title">Restaurant</label>
+          <input
+            id="restaurant"
+            v-model="values.restaurant"
+            required
+            type="text"
+            class="form-input"
+            placeholder="Your restaurant"
+          />
+        </div>
+        <!-- <div class="input-wrapper">
+          <label for="location" class="input-title">Location</label>
+          <input
+            id="location"
+            required
+            type="text"
+            class="form-input"
+            placeholder="Your location"
+          />
+        </div> -->
+      </div>
+
+      <div class="btn-wrapper">
+        <button class="submit-btn" type="submit">Submit</button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      values: {
+        name: '',
+        email: '',
+        phone: '',
+        restaurant: '',
+      },
+    }
+  },
+  methods: {
+    handleSubmit() {
+      alert(
+        JSON.stringify({
+          name: this.values.name,
+          phone: this.values.phone,
+          email: this.values.email,
+          restaurant: this.values.restaurant,
+        })
+      )
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -103,6 +157,15 @@ export default {}
         font-weight: 400;
         font-size: 14px;
         line-height: 148.1%;
+        width: fit-content;
+        position: relative;
+
+        &::before {
+          position: absolute;
+          content: '*';
+          @include color($colors, highlight);
+          right: -0.6rem;
+        }
       }
 
       .form-input {
@@ -124,6 +187,23 @@ export default {}
           color: var(--light-gray-46);
         }
       }
+    }
+  }
+  .btn-wrapper {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    .submit-btn {
+      cursor: pointer;
+      padding: 0.5rem 2rem;
+      border-radius: 5px;
+      background-color: map-get($map: $colors, $key: primary);
+      border: none;
+
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 148.1%;
+      color: #fff;
     }
   }
 }
