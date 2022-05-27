@@ -10,7 +10,9 @@
             Management System.
           </p>
           <div class="cta-wrapper">
-            <button class="cta">Get Started</button>
+            <button class="cta" @click="$emit('demo-clicked')">
+              Request a demo
+            </button>
           </div>
         </div>
         <div class="img-wrapper">

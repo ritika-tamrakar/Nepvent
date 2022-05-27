@@ -42,11 +42,10 @@
 
         <h1 class="blog-title">{{ title }}</h1>
 
+        <span class="read-time">{{ readTime }}</span>
         <div class="hero-pic-wrapper">
           <img :src="heroPic" :alt="title" class="hero-pic" />
         </div>
-
-        <span class="read-time">{{ readTime }}</span>
       </header>
       <main class="blog-styles" v-html="cleanMessage()"></main>
     </article>
@@ -92,30 +91,71 @@ export default {
 
 <style lang="scss">
 .blog-page {
+  position: relative;
   @include mq(md) {
     display: flex;
     gap: 2rem;
   }
 
   .blog-social-icon-bar {
-    display: none;
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: 2rem;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+
+    .social-links {
+      text-decoration: none;
+      @include color($text, dark-600);
+    }
     @include mq(md) {
-      display: flex;
+      position: unset;
       font-size: 1.5rem;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
       margin-top: 25%;
-      .social-links {
-        text-decoration: none;
-        @include color($text, dark-600);
-      }
     }
   }
 }
 
+.blog-content {
+  padding: 2rem 0;
+}
+
 .hero-content {
+  font-size: 16px;
+
+  .created-time {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    text-transform: uppercase;
+  }
+  .blog-title {
+    margin-top: 0.7rem;
+    font-size: 1.5em;
+
+    @include mq(xs) {
+      font-size: 1.7em;
+    }
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.2em;
+
+    @include mq(md) {
+      font-size: 2.5em;
+    }
+  }
+  .read-time {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 143.1%;
+  }
   .hero-pic-wrapper {
+    margin-top: 1rem;
     overflow: hidden;
     max-width: 760px;
     max-height: 500px;
@@ -162,7 +202,7 @@ export default {
   @media (min-width: map-get($map: $breakpoints, $key: md)) {
     padding: 1em 0;
     h1 {
-      font-size: 2.5em;
+      font-size: 2.4em;
     }
     h2 {
       font-size: 2.3em;

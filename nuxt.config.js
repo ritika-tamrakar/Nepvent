@@ -23,6 +23,7 @@ export default {
     '~/plugins/vue-sanitize.js',
     { src: '~/plugins/vue-carousel.js', mode: 'client' },
     '~/plugins/vue-select.js',
+    '~plugins/vue-js-modal.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
