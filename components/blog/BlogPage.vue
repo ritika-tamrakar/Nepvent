@@ -42,7 +42,10 @@
 
         <h1 class="blog-title">{{ title }}</h1>
 
-        <span class="read-time">{{ readTime }}</span>
+        <span class="read-time">
+          <div class="category-tag">{{ category }}</div>
+          {{ readTime }}
+        </span>
         <div class="hero-pic-wrapper">
           <img :src="heroPic" :alt="title" class="hero-pic" />
         </div>
@@ -79,6 +82,10 @@ export default {
     title: {
       type: String,
       default: '',
+    },
+    category: {
+      type: String,
+      default: 'nepvent',
     },
   },
   methods: {
@@ -152,7 +159,17 @@ export default {
     justify-content: flex-end;
     font-weight: 300;
     font-size: 14px;
+    gap: 0.5rem;
+    align-items: center;
     line-height: 143.1%;
+  }
+  .category-tag {
+    background-color: map-get($map: $colors, $key: light-300);
+    font-size: 0.85rem;
+    width: fit-content;
+    @include color($text, dark-300);
+    padding: 0.1em 0.5em;
+    border-radius: 5px;
   }
   .hero-pic-wrapper {
     margin-top: 1rem;

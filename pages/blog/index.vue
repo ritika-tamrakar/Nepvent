@@ -1,16 +1,15 @@
 <template>
   <main class="blogs-container">
     <h2 class="blogs-title">Nepvent Gallery of Blog</h2>
-
     <GridContainer>
       <BlogCard
-        v-for="(blog, index) in blogData"
-        :key="index"
+        v-for="blog in test"
+        :key="blog.id"
         :title="blog.title"
-        :img-url="blog.imgUrl"
-        :excerpt="blog.excerpt"
-        :date="blog.date"
-        :read-time="blog.readTime"
+        :excerpt="blog.description"
+        :date="$dateFns.format(blog.createdAt, 'PP')"
+        :read-time="`${blog.readTime} min read`"
+        :category="blog.category.name"
       />
     </GridContainer>
   </main>
@@ -19,11 +18,13 @@
 <script>
 import GridContainer from '../../components/blog/GridContainer.vue'
 import BlogCard from '../../components/blog/BlogCard.vue'
+
 export default {
   name: 'BlogIndexPage',
   components: { GridContainer, BlogCard },
   data() {
     return {
+      test: [],
       blogData: [
         {
           title: 'The Three-body Problem in Software Development',
@@ -81,6 +82,18 @@ export default {
         },
       ],
     }
+  },
+  async fetch() {
+    const { data } = await this.$axios.$get('/api/blog')
+    this.test = data?.items
+  },
+
+  methods: {
+    createSlug(text) {
+      text = text.trim ? text.trim() : text.replace(/^\s+|\s+$/g, '')
+      text = text.toLowerCase()
+      return text.split(/\s+/).join('-')
+    },
   },
 }
 </script>

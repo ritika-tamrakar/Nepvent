@@ -10,12 +10,19 @@ export default {}
 
 <style lang="scss" scoped>
 .grid-container {
-  max-width: map-get($map: $breakpoints, $key: xl);
+  max-width: map-get($map: $breakpoints, $key: lg);
+  width: fit-content;
+  margin: auto;
   margin-top: 4rem;
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  @include mq(md) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include mq(lg) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
   gap: 2rem;
 }
 </style>
