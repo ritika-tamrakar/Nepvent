@@ -163,7 +163,7 @@ export default {
   align-items: center;
 }
 
-@media (min-width: map-get($map: $breakpoints, $key: md)) {
+@include mq(md) {
   .content-container {
     padding: 70px 40px 0px 40px;
     .flex-wrapper {
@@ -173,6 +173,16 @@ export default {
 
   .qr-container {
     padding: 70px 40px;
+  }
+}
+
+@include mq('2xl') {
+  .content-container {
+    padding: 70px 0 0 0;
+  }
+
+  .qr-container {
+    padding: 70px 0;
   }
 }
 

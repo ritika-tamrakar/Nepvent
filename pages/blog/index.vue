@@ -1,16 +1,25 @@
 <template>
   <main class="blogs-container">
     <h2 class="blogs-title">Nepvent Gallery of Blog</h2>
-    <div v-if="error">{{ error }}</div>
     <GridContainer>
-      <BlogCard
-        v-for="blog in test"
+      <!-- <BlogCard
+        v-for="blog in blogData"
         :key="blog.id"
         :title="blog.title"
         :excerpt="blog.description"
         :date="$dateFns.format(blog.createdAt, 'PP')"
         :read-time="`${blog.readTime} min read`"
         :category="blog.category.name"
+      /> -->
+      <BlogCard
+        v-for="({ title, imgUrl, excerpt, date, readTime }, index) in blogData"
+        :key="index"
+        :title="title"
+        :excerpt="excerpt"
+        :date="date"
+        :read-time="readTime"
+        category="nepvent"
+        :img-url="imgUrl"
       />
     </GridContainer>
     <!-- <infinite-loading

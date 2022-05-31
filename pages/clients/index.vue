@@ -174,7 +174,6 @@ export default {
 
                 const { totalPages } = meta
                 if (this.currentPage < totalPages) {
-                  console.log(this.currentPage)
                   this.currentPage += 1
                   $state.loaded()
                 } else {
