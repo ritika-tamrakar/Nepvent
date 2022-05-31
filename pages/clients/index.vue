@@ -3,6 +3,7 @@
     <div class="title-wrapper">
       <h1 class="title">Brands we work with</h1>
     </div>
+    <!-- {{ clientList }} -->
     <div v-if="clientList" class="sections-cards-wrapper">
       <div
         v-for="section in Object.keys(clientList)"
@@ -26,6 +27,11 @@
         </div>
       </div>
     </div>
+    <infinite-loading
+      v-if="clientList"
+      spinner="spiral"
+      @infinite="infiniteScroll"
+    ></infinite-loading>
   </main>
 </template>
 
@@ -36,13 +42,84 @@ export default {
   components: { ClientCard },
   data() {
     return {
-      clientList: {},
+      clientList: {
+        a: [],
+        b: [],
+        c: [],
+        d: [],
+        e: [],
+        f: [],
+        g: [],
+        h: [],
+        i: [],
+        j: [],
+        k: [],
+        l: [],
+        m: [],
+        n: [],
+        o: [],
+        p: [],
+        q: [],
+        r: [],
+        s: [],
+        t: [],
+        u: [],
+        v: [],
+        w: [],
+        x: [],
+        y: [],
+        z: [],
+      },
+      currentPage: 1,
     }
   },
-  async fetch() {
-    try {
-      const { data } = await this.$axios.$get('/api/client-list')
-      const dataList = data?.items
+  // async fetch() {
+  //   try {
+  //     const { data } = await this.$axios.$get(
+  //       `/api/client-list?page=${this.currentPage}`
+  //     )
+
+  //     // eslint-disable-next-line no-console
+  //     console.log({ data })
+  //     const dataList = data?.items
+  //     const temp = {
+  //       a: [],
+  //       b: [],
+  //       c: [],
+  //       d: [],
+  //       e: [],
+  //       f: [],
+  //       g: [],
+  //       h: [],
+  //       i: [],
+  //       j: [],
+  //       k: [],
+  //       l: [],
+  //       m: [],
+  //       n: [],
+  //       o: [],
+  //       p: [],
+  //       q: [],
+  //       r: [],
+  //       s: [],
+  //       t: [],
+  //       u: [],
+  //       v: [],
+  //       w: [],
+  //       x: [],
+  //       y: [],
+  //       z: [],
+  //     }
+  //     for (const item of dataList) {
+  //       const firstLetter = String(item.restaurantName).toLowerCase()[0]
+  //       temp[firstLetter].push(item)
+  //     }
+  //     this.clientList = temp
+  //   } catch (e) {}
+  // },
+
+  methods: {
+    getSectionedList(dataList) {
       const temp = {
         a: [],
         b: [],
@@ -75,26 +152,38 @@ export default {
         const firstLetter = String(item.restaurantName).toLowerCase()[0]
         temp[firstLetter].push(item)
       }
-      this.clientList = temp
-    } catch (e) {}
-  },
-
-  computed: {
-    getSectionList: () => {
-      if (!this.clientList) return
-      return this.convertToSections(this.clientList)
+      return temp
     },
-  },
 
-  methods: {
-    convertToSections(items) {
-      const sectionList = {}
-      for (const item of items) {
-        const name = item.restaurantName
-        if (!sectionList[name[0]].length) sectionList[name[0]] = []
-        sectionList[name[0]].push(item)
-      }
-      return sectionList
+    infiniteScroll($state) {
+      try {
+        setTimeout(
+          () =>
+            this.$axios
+              .$get(`/api/client-list?page=${this.currentPage}`)
+              .then(({ data }) => {
+                const dataList = data?.items
+
+                for (const item of dataList) {
+                  const firstLetter = String(
+                    item.restaurantName
+                  ).toLowerCase()[0]
+                  this.clientList[firstLetter].push(item)
+                }
+                const meta = data?.meta
+
+                const { totalPages } = meta
+                if (this.currentPage < totalPages) {
+                  console.log(this.currentPage)
+                  this.currentPage += 1
+                  $state.loaded()
+                } else {
+                  $state.complete()
+                }
+              }),
+          500
+        )
+      } catch (e) {}
     },
   },
 }
@@ -109,7 +198,7 @@ export default {
   padding: 0 var(--horizontal-padding);
 
   .client-cards-wrapper {
-    padding: 2rem 0;
+    padding: 1rem 0 2rem 0;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;

@@ -1,59 +1,61 @@
 <!-- have to refactor this  -->
 <template>
   <footer class="container">
-    <section class="content-container">
-      <div class="flex-wrapper">
-        <div class="logo-container flex-child">
+    <div class="footer-wrapper">
+      <section class="content-container">
+        <div class="flex-wrapper">
+          <div class="logo-container flex-child">
+            <img
+              v-lazy="
+                `https://res.cloudinary.com/dudbkhnf3/image/upload/v1633346810/nepvent-company-site/logo-white.png`
+              "
+              alt="logo"
+            />
+            <span class="logo-tag-line"
+              >Nepal's Best Restaurant Management System</span
+            >
+          </div>
+          <div class="flex-child">
+            <h4 class="contact-info sub-title">Contact Information</h4>
+            <div class="social-icon-wrappper">
+              <fa :icon="['fas', 'phone-square']" />
+              9818000015, 9801105225
+            </div>
+            <div class="social-icon-wrappper">
+              <fa :icon="['fas', 'envelope']" />
+              contact@nepvent.com
+            </div>
+          </div>
+          <div class="flex-child">
+            <h4 class="sub-title contact-info">Follow Us On</h4>
+            <div class="social-links-wrapper">
+              <fa
+                :icon="['fab', 'facebook']"
+                class="links"
+                @click="openLink('https://www.facebook.com/nepventofficial/')"
+              />
+              <fa
+                :icon="['fab', 'instagram']"
+                class="links"
+                @click="openLink('https://www.instagram.com/nepvent.rms/')"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="qr-container">
+        <h4 class="qr-title">Download App</h4>
+        <div class="">
           <img
             v-lazy="
-              `https://res.cloudinary.com/dudbkhnf3/image/upload/v1633346810/nepvent-company-site/logo-white.png`
+              `https://res.cloudinary.com/dudbkhnf3/image/upload/v1635661574/nepvent-company-site/qr_xhml0a.svg`
             "
-            alt="logo"
+            alt="qr"
+            class="qr-code"
           />
-          <span class="logo-tag-line"
-            >Nepal's Best Restaurant Management System</span
-          >
         </div>
-        <div class="flex-child">
-          <h4 class="contact-info sub-title">Contact Information</h4>
-          <div class="social-icon-wrappper">
-            <fa :icon="['fas', 'phone-square']" />
-            9818000015, 9801105225
-          </div>
-          <div class="social-icon-wrappper">
-            <fa :icon="['fas', 'envelope']" />
-            contact@nepvent.com
-          </div>
-        </div>
-        <div class="flex-child">
-          <h4 class="sub-title contact-info">Follow Us On</h4>
-          <div class="social-links-wrapper">
-            <fa
-              :icon="['fab', 'facebook']"
-              class="links"
-              @click="openLink('https://www.facebook.com/nepventofficial/')"
-            />
-            <fa
-              :icon="['fab', 'instagram']"
-              class="links"
-              @click="openLink('https://www.instagram.com/nepvent.rms/')"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="qr-container">
-      <h4 class="qr-title">Download App</h4>
-      <div class="">
-        <img
-          v-lazy="
-            `https://res.cloudinary.com/dudbkhnf3/image/upload/v1635661574/nepvent-company-site/qr_xhml0a.svg`
-          "
-          alt="qr"
-          class="qr-code"
-        />
-      </div>
-    </section>
+      </section>
+    </div>
     <section class="copyright-wrapper">Copyright © 2022, Nepvent</section>
   </footer>
 </template>
@@ -76,6 +78,9 @@ export default {
   color: rgb(227, 236, 236);
 }
 
+.footer-wrapper {
+  @include container();
+}
 .content-container {
   padding: 50px var(--horizontal-padding);
 
