@@ -10,16 +10,16 @@
         <Carousel :per-page="1" autoplay autoplay-hover-pause>
           <Slide
             v-for="(
-              { clientName, businessName, testimonial, imgUrl }, index
+              { author, tenant, content, tenantImage }, index
             ) in testimonials"
             :key="index"
           >
             <div class="card-wrapper">
               <TestimonialCard
-                :client-name="clientName"
-                :business-name="businessName"
-                :testimonial="testimonial"
-                :img-url="imgUrl"
+                :client-name="author"
+                :business-name="tenant"
+                :testimonial="content"
+                :img-url="tenantImage.url"
               />
             </div>
           </Slide>
@@ -41,7 +41,7 @@ export default {
   },
   data() {
     return {
-      testimonials: [
+      testTestimonials: [
         {
           clientName: 'Bhawani Silakar',
           businessName: 'Morrison Cafe',
@@ -76,9 +76,13 @@ export default {
             'Initially, I was skeptical about using a relatively young product as compared to other big players. But now I find it very efficient, simple and well built.',
         },
       ],
+      testimonials: [],
     }
   },
-  mounted() {},
+  async fetch() {
+    const { data } = await this.$axios.$get('api/testimonial')
+    this.testimonials = data?.items
+  },
 }
 </script>
 
