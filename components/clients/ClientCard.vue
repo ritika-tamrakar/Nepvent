@@ -47,7 +47,7 @@ export default {
     },
     imgUrl: {
       type: String,
-      default: '',
+      default: 'https://menu.nepvent.com/client/aalucha.jpeg',
     },
   },
 }

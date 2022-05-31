@@ -20,10 +20,11 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/vue-lazyload', ssr: false },
-    '~/plugins/vue-sanitize.js',
-    { src: '~/plugins/vue-carousel.js', mode: 'client' },
-    '~/plugins/vue-select.js',
-    '~plugins/vue-js-modal.js',
+    '~/plugins/vue-sanitize',
+    { src: '~/plugins/vue-carousel', mode: 'client' },
+    '~/plugins/vue-select',
+    '~plugins/vue-js-modal',
+    { src: '~/plugins/vue-infinite-loading', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

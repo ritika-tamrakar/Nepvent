@@ -1,6 +1,7 @@
 <template>
   <main class="blogs-container">
     <h2 class="blogs-title">Nepvent Gallery of Blog</h2>
+    <div v-if="error">{{ error }}</div>
     <GridContainer>
       <BlogCard
         v-for="blog in test"
@@ -12,6 +13,11 @@
         :category="blog.category.name"
       />
     </GridContainer>
+    <!-- <infinite-loading
+      v-if="test.length"
+      spinner="spiral"
+      @infinite="infiniteScroll"
+    ></infinite-loading> -->
   </main>
 </template>
 
@@ -25,6 +31,7 @@ export default {
   data() {
     return {
       test: [],
+
       blogData: [
         {
           title: 'The Three-body Problem in Software Development',
@@ -84,8 +91,12 @@ export default {
     }
   },
   async fetch() {
-    const { data } = await this.$axios.$get('/api/blog')
-    this.test = data?.items
+    try {
+      const { data } = await this.$axios.$get('/api/blog')
+      this.test = data?.items
+    } catch (error) {
+      this.error = error
+    }
   },
 
   methods: {
