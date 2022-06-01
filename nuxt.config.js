@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Nepvent',
+    title: 'Nepvent Restaurant Management',
     htmlAttrs: {
       lang: 'en',
     },
@@ -10,8 +10,37 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+      { property: 'og:site_name', content: 'Nepvent' },
+      { name: 'full-screen', content: 'yes' },
+      { name: 'theme-color', content: '#eeeeee' },
+      {
+        property: 'og:image',
+        content:
+          'https://res.cloudinary.com/dudbkhnf3/image/upload/v1633346809/nepvent-company-site/logo.png',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'shortcut icon', type: 'image/png', href: '/icon.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+      },
+      { rel: 'manifest', href: '/site.webmanifest' },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
