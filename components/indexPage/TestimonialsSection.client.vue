@@ -10,7 +10,7 @@
         <Carousel :per-page="1" autoplay autoplay-hover-pause>
           <Slide
             v-for="(
-              { author, tenant, content, tenantImage }, index
+              { author, tenant, content, tenantImage, rating }, index
             ) in testimonials"
             :key="index"
           >
@@ -20,6 +20,7 @@
                 :business-name="tenant"
                 :testimonial="content"
                 :img-url="tenantImage.url"
+                :no-of-stars="Math.floor(rating)"
               />
             </div>
           </Slide>
@@ -80,7 +81,7 @@ export default {
     }
   },
   async fetch() {
-    const { data } = await this.$axios.$get('api/testimonial')
+    const { data } = await this.$axios.$get('/api/testimonial')
     this.testimonials = data?.items
   },
 }

@@ -61,7 +61,7 @@ export default {
     },
     noOfStars: {
       type: Number,
-      default: 5,
+      default: 2,
     },
   },
 }
@@ -129,6 +129,9 @@ $border-radius: 1rem;
   padding-bottom: 1rem;
   @include mq(xs) {
     padding-bottom: 3rem;
+  }
+  @include mq(md) {
+    min-width: 400px;
   }
   margin-bottom: 3rem;
   border-radius: $border-radius;

@@ -159,6 +159,7 @@ export default {
     justify-content: flex-end;
     font-weight: 300;
     font-size: 14px;
+    margin-top: 0.5rem;
     gap: 0.5rem;
     align-items: center;
     line-height: 143.1%;

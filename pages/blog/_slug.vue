@@ -3,7 +3,7 @@
     <BlogPage
       read-time="2 min read"
       created-at="Aug 19, 2021"
-      title="Creating valuable Content for the Design Community with Marisa Chentakul"
+      :title="slug"
       hero-pic="https://images.unsplash.com/photo-1651156755808-80a7857ac6b1?ixlib=rb-1.2.1&amp;raw_url=true&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170"
       description="Sanity.io lets me work with structured content. That means I can add more content types."
       html-string="
@@ -29,6 +29,7 @@ export default {
   components: { BlogPage },
   asyncData({ params }) {
     const { slug } = params
+
     return {
       slug,
     }
