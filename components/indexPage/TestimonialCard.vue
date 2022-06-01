@@ -80,6 +80,8 @@ $border-radius: 1rem;
     max-width: 450px;
 
     @include mq(md) {
+      max-width: 550px;
+
       margin-right: -13rem;
     }
     overflow: hidden;
@@ -132,6 +134,7 @@ $border-radius: 1rem;
   }
   @include mq(md) {
     min-width: 400px;
+    min-height: 300px;
   }
   margin-bottom: 3rem;
   border-radius: $border-radius;
