@@ -78,7 +78,12 @@
 
       <div class="btn-wrapper">
         <button
-          :class="isValid ? 'submit-btn' : 'submit-btn-disabled'"
+          :class="{
+            'submit-btn': isValid,
+            'submit-btn-disabled': !isValid,
+            'submit-btn-success': status === 'success',
+            'submit-btn-error': status === 'error',
+          }"
           type="submit"
           :disabled="!isValid"
         >
@@ -105,6 +110,7 @@ const requestDemoSchema = object().shape({
 export default {
   data() {
     return {
+      status: 'idle',
       values: {
         name: '',
         email: '',
@@ -136,15 +142,33 @@ export default {
             restaurant: '',
           }
 
-          alert(
-            JSON.stringify({
+          this.$axios
+            .$post('/api/form', {
               name: this.values.name,
-              phone: this.values.phone,
               email: this.values.email,
-              restaurant: this.values.restaurant,
+              mobileNumber: this.values.phone,
+              restaurantName: this.values.restaurant,
             })
-          )
-          // login the user
+            .then(() => {
+              this.status = 'success'
+
+              setTimeout(() => {
+                this.status = 'idle'
+              }, 1000)
+
+              this.values = {
+                name: '',
+                email: '',
+                phone: '',
+                restaurant: '',
+              }
+            })
+            .catch(() => {
+              this.status = 'error'
+              setTimeout(() => {
+                this.status = 'idle'
+              }, 1000)
+            })
         })
         .catch((err) => {
           err.inner.forEach((error) => {
@@ -282,6 +306,31 @@ export default {
       padding: 0.5rem 2rem;
       border-radius: 5px;
       background-color: map-get($map: $colors, $key: primary);
+      border: none;
+
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 148.1%;
+      color: #fff;
+    }
+
+    .submit-btn-success {
+      cursor: pointer;
+      padding: 0.5rem 2rem;
+      border-radius: 5px;
+      background-color: map-get($map: $colors, $key: success);
+      border: none;
+
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 148.1%;
+      color: #fff;
+    }
+    .submit-btn-error {
+      cursor: pointer;
+      padding: 0.5rem 2rem;
+      border-radius: 5px;
+      background-color: map-get($map: $colors, $key: highlight);
       border: none;
 
       font-weight: 600;

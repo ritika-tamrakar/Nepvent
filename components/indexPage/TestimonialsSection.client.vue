@@ -7,7 +7,13 @@
       <QuotesSvg class="quotes-svg" />
 
       <client-only placeholder="...loading">
-        <Carousel :per-page="1" autoplay autoplay-hover-pause>
+        <Carousel
+          :per-page="1"
+          autoplay
+          autoplay-hover-pause
+          loop
+          autoplay-timeout="2500"
+        >
           <Slide
             v-for="(
               { author, tenant, content, tenantImage, rating }, index
