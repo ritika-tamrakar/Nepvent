@@ -195,6 +195,7 @@ export default {
 .clients-container {
   @include container();
   padding: 0 var(--horizontal-padding);
+  min-height: 380px;
 
   .client-cards-wrapper {
     padding: 1rem 0 2rem 0;
