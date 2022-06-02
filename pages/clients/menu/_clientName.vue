@@ -22,19 +22,23 @@
     </div>
     <div class="options-wrapper">
       <p class="options-header">Select</p>
-      <v-select :options="categories" v-model="selectedCategory" />
+      <v-select v-model="selectedCategory" :options="dropdownCategories" />
     </div>
 
     <div class="menu-wrapper">
       <h5 class="menu-tag">{{ selectedCategory }}</h5>
       <div class="menu-listings">
         <MenuItem
-          v-for="(menuItem, index) in menu"
-          :key="index"
-          :img-url="menuItem.imgUrl"
-          :dish-name="menuItem.dishName"
-          :price="menuItem.price"
-          :description="menuItem.description"
+          v-for="{ id, image, name, price, description } in menu"
+          :key="id"
+          :img-url="
+            !image
+              ? 'https://ouch-cdn2.icons8.com/pXA1znY1Yt4-oyZjovbQz6Xu0p51Ajeb4ZFI1htTxfc/rs:fit:256:140/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTgz/L2MzNTA0MzFmLTM0/OWUtNDBhYy05ZWZh/LTViYTE5OGMyY2Ri/Mi5wbmc.png'
+              : image
+          "
+          :dish-name="name"
+          :price="`${price}`"
+          :description="description"
         />
       </div>
     </div>
@@ -46,10 +50,27 @@ import 'vue-select/dist/vue-select.css'
 import MenuItem from '../../../components/menu/MenuItem.vue'
 export default {
   components: { MenuItem },
-  asyncData({ params }) {
+  async asyncData({ params, $axios }) {
     const { clientName } = params
+    const { data } = await $axios.$get('/api/menu/menuCategory')
+
+    // make api request according to the client name
+    // const { data: clientInfo } = await $axios.$get(
+    //   `/api/client-list?RestaurantName=${clientName}`
+    // )
+
+    // console.log({ clientInfo })
+
+    const categories = data.map((el) => ({
+      id: el.id,
+      name: el.name,
+    }))
+    const dropdownCategories = ['All', ...categories.map((el) => el.name)]
+
     return {
       clientName,
+      categories,
+      dropdownCategories,
     }
   },
   data() {
@@ -57,44 +78,37 @@ export default {
       contact: '986-0108771',
       imgUrl: 'https://menu.nepvent.com/storage/logo/catmandu-foodland.jpg',
       location: 'Durbar Square, Bhaktapur',
-      categories: ['All', 'Momo'],
       selectedCategory: 'All',
-      menu: [
-        {
-          imgUrl:
-            'https://ouch-cdn2.icons8.com/pXA1znY1Yt4-oyZjovbQz6Xu0p51Ajeb4ZFI1htTxfc/rs:fit:256:140/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTgz/L2MzNTA0MzFmLTM0/OWUtNDBhYy05ZWZh/LTViYTE5OGMyY2Ri/Mi5wbmc.png',
-          dishName: 'Timmur Aaloo Tareko',
-          description:
-            'Mildly spiced mashed potatoes, mixed with peas, vegetables and shallow fried',
-          price: '325',
-        },
-
-        {
-          imgUrl:
-            'https://ouch-cdn2.icons8.com/pXA1znY1Yt4-oyZjovbQz6Xu0p51Ajeb4ZFI1htTxfc/rs:fit:256:140/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTgz/L2MzNTA0MzFmLTM0/OWUtNDBhYy05ZWZh/LTViYTE5OGMyY2Ri/Mi5wbmc.png',
-          dishName: 'Timmur Aaloo Tareko',
-          description:
-            'Mildly spiced mashed potatoes, mixed with peas, vegetables and shallow fried',
-          price: '325',
-        },
-        {
-          imgUrl:
-            'https://ouch-cdn2.icons8.com/pXA1znY1Yt4-oyZjovbQz6Xu0p51Ajeb4ZFI1htTxfc/rs:fit:256:140/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTgz/L2MzNTA0MzFmLTM0/OWUtNDBhYy05ZWZh/LTViYTE5OGMyY2Ri/Mi5wbmc.png',
-          dishName: 'Timmur Aaloo Tareko',
-          description:
-            'Mildly spiced mashed potatoes, mixed with peas, vegetables and shallow fried',
-          price: '325',
-        },
-        {
-          imgUrl:
-            'https://ouch-cdn2.icons8.com/pXA1znY1Yt4-oyZjovbQz6Xu0p51Ajeb4ZFI1htTxfc/rs:fit:256:140/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTgz/L2MzNTA0MzFmLTM0/OWUtNDBhYy05ZWZh/LTViYTE5OGMyY2Ri/Mi5wbmc.png',
-          dishName: 'Timmur Aaloo Tareko',
-          description:
-            'Mildly spiced mashed potatoes, mixed with peas, vegetables and shallow fried',
-          price: '325',
-        },
-      ],
+      menu: [],
     }
+  },
+  async fetch() {
+    const { data } = await this.$axios.$get(`/api/menu`)
+    const menu = data?.items
+
+    console.log({ menu })
+    this.menu = menu
+  },
+
+  watch: {
+    selectedCategory: {
+      handler() {
+        this.getNewMenuByCategory(this.selectedCategory)
+      },
+    },
+  },
+  methods: {
+    async getNewMenuByCategory(category) {
+      if (category === 'All') {
+        this.$fetch()
+      }
+      const categoryId = this.categories.find((el) => el.name === category).id
+      const { data } = await this.$axios.$get(
+        `/api/menu/?category=${categoryId}`
+      )
+      console.log({ data, category, categoryId })
+      this.menu = data?.items
+    },
   },
 }
 </script>

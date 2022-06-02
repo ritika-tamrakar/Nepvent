@@ -141,7 +141,7 @@ export default {
 .blogs-container {
   @include container();
   padding: 3rem 1rem;
-  min-height: 380px;
+  min-height: 580px;
   .blogs-title {
     font-size: 1.5rem;
     font-weight: 700;

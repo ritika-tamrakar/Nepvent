@@ -31,7 +31,7 @@ export default {
 <style lang="scss" scoped>
 .card-wrapper {
   margin-top: 2rem;
-  @include mq(md) {
+  @include mq(sm) {
     display: flex;
     gap: 1rem;
   }
@@ -47,12 +47,16 @@ export default {
   }
 
   .text-content {
+    @include mq(sm) {
+      flex-grow: 1;
+    }
     .card-title {
       margin-top: 1rem;
       font-style: normal;
       font-weight: 500;
       font-size: 18px;
       line-height: 148.1%;
+      text-transform: capitalize;
 
       @include mq(md) {
         margin-top: 0rem;

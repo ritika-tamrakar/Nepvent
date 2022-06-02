@@ -34,6 +34,27 @@ export default {
       slug,
     }
   },
+  // async fetch() {
+  //   const slug = this.slug
+  //   const { data } = await this.$axios.$get(`/api/blog/${slug}`)
+
+  //   // the data is the blog data needed to show here
+
+  // blog_schema{
+  //   "title": "string",
+  //   "description": "string",
+  //   "body": "string",
+  //   "imageIds": [
+  //     0
+  //   ],
+  //   "tags": [
+  //     "string"
+  //   ],
+  //   "category": "string"
+  // }
+
+  // },
+
   head() {
     return {
       title: this.slug,

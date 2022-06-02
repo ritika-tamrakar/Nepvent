@@ -43,8 +43,9 @@
             type="number"
             class="form-input"
             placeholder="Your Mobile No"
-            @blur="validate('phone')"
             @keypress="validate('phone')"
+            @change="validate('phone')"
+            @blur="validate('phone')"
           />
           <span v-show="errors.phone" class="error">{{ errors.phone }}</span>
         </div>

@@ -3,7 +3,6 @@
     <div class="title-wrapper">
       <h1 class="title">Brands we work with</h1>
     </div>
-    <!-- {{ clientList }} -->
     <div v-if="clientList" class="sections-cards-wrapper">
       <div
         v-for="section in Object.keys(clientList)"
@@ -195,7 +194,7 @@ export default {
 .clients-container {
   @include container();
   padding: 0 var(--horizontal-padding);
-  min-height: 380px;
+  min-height: 580px;
 
   .client-cards-wrapper {
     padding: 1rem 0 2rem 0;
