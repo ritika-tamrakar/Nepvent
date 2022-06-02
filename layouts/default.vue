@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <NavBar />
-    <Nuxt />
+    <Nuxt class="content" />
     <FooterMain />
   </div>
 </template>
@@ -20,5 +20,9 @@ export default {
   @include padding-var();
 
   overflow-x: hidden;
+}
+
+.content {
+  height: 100%;
 }
 </style>

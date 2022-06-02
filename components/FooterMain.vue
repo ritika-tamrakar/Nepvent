@@ -3,8 +3,8 @@
   <footer class="container">
     <div class="footer-wrapper">
       <section class="content-container">
-        <div class="flex-wrapper">
-          <div class="logo-container flex-child">
+        <div class="grid-wrapper">
+          <div class="logo-container">
             <img
               v-lazy="
                 `https://res.cloudinary.com/dudbkhnf3/image/upload/v1633346810/nepvent-company-site/logo-white.png`
@@ -15,7 +15,7 @@
               >Nepal's Best Restaurant Management System</span
             >
           </div>
-          <div class="flex-child">
+          <div class="">
             <h4 class="contact-info sub-title">Contact Information</h4>
             <div class="social-icon-wrappper">
               <fa :icon="['fas', 'phone-square']" />
@@ -25,9 +25,7 @@
               <fa :icon="['fas', 'envelope']" />
               contact@nepvent.com
             </div>
-          </div>
-          <div class="flex-child">
-            <h4 class="sub-title contact-info">Follow Us On</h4>
+            <h4 class="contact-info follow-links follow-title">Follow Us On</h4>
             <div class="social-links-wrapper">
               <fa
                 :icon="['fab', 'facebook']"
@@ -41,18 +39,19 @@
               />
             </div>
           </div>
-        </div>
-      </section>
-      <section class="qr-container">
-        <h4 class="qr-title">Download App</h4>
-        <div class="">
-          <img
-            v-lazy="
-              `https://res.cloudinary.com/dudbkhnf3/image/upload/v1635661574/nepvent-company-site/qr_xhml0a.svg`
-            "
-            alt="qr"
-            class="qr-code"
-          />
+
+          <div class="">
+            <h4 class="sub-title">Download App</h4>
+            <div class="qr-img-wrapper">
+              <img
+                v-lazy="
+                  `https://res.cloudinary.com/dudbkhnf3/image/upload/v1635661574/nepvent-company-site/qr_xhml0a.svg`
+                "
+                alt="qr"
+                class="qr-code"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -115,35 +114,32 @@ export default {
       cursor: pointer;
     }
   }
-  .flex-wrapper {
-    display: flex;
-    flex-wrap: wrap;
+  .grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 2rem;
 
-    .flex-child {
-      width: 100%;
-      flex-grow: 1;
+    @include mq(sm) {
+      grid-template-columns: 1fr 1fr;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    @include mq(lg) {
+      grid-template-columns: 1.5fr 1.5fr 1fr;
+    }
 
-      min-width: 360px;
-
-      @media (min-width: map-get($map: $breakpoints, $key: md)) {
-        max-width: 50%;
-      }
-      @media (min-width: map-get($map: $breakpoints, $key: lg)) {
-        max-width: 33.3333%;
-      }
+    .follow-links {
+      margin-top: 1rem;
+    }
+    .follow-title {
+      font-size: 1.5rem;
+      font-weight: 500;
     }
   }
 }
 
-.qr-container {
-  padding: 50px var(--horizontal-padding);
-
-  .qr-title {
-    font-size: 2rem;
-    margin-bottom: 1.2rem;
-    font-weight: 600;
-  }
+.qr-img-wrapper {
+  margin-top: 1rem;
 }
 .logo-container {
   img {
@@ -165,10 +161,7 @@ export default {
 
 @include mq(md) {
   .content-container {
-    padding: 70px 40px 0px 40px;
-    .flex-wrapper {
-      gap: 1rem;
-    }
+    padding: 60px 40px;
   }
 
   .qr-container {
@@ -178,19 +171,11 @@ export default {
 
 @include mq('2xl') {
   .content-container {
-    padding: 70px 0 0 0;
+    padding: 70px 0;
   }
 
   .qr-container {
     padding: 70px 0;
-  }
-}
-
-@media (min-width: map-get($map: $breakpoints, $key: lg)) {
-  .content-container {
-    .flex-wrapper {
-      gap: 0rem;
-    }
   }
 }
 </style>

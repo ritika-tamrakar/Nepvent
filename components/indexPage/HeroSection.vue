@@ -1,7 +1,6 @@
 <template>
   <section class="container">
     <div class="hide-overflow">
-      <bg-svg class="bg-svg" />
       <div class="content-container">
         <div class="text-content">
           <h2 class="title">Restaurant Management Like Clockwork</h2>
@@ -40,10 +39,8 @@
 </template>
 
 <script>
-import BgSvg from './BgSvg.vue'
 export default {
   name: 'HeroSection',
-  components: { BgSvg },
 }
 </script>
 

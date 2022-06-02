@@ -1,6 +1,5 @@
 <template>
   <section class="container">
-    <BgSvgSlanted class="bg-svg" />
     <div class="feature-container">
       <h2 class="f-title">Additional Features</h2>
       <p class="f-desc">
@@ -22,10 +21,9 @@
 
 <script>
 import IconCards from './IconCards.vue'
-import BgSvgSlanted from './BgSvgSlanted.vue'
 export default {
   name: 'AdditionalFeaturesSection',
-  components: { IconCards, BgSvgSlanted },
+  components: { IconCards },
   data() {
     return {
       cards: [
