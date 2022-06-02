@@ -44,7 +44,7 @@
 
         <span class="read-time">
           <div class="category-tag">{{ category }}</div>
-          {{ readTime }}
+          {{ readTime }} mins
         </span>
         <div class="hero-pic-wrapper">
           <img :src="heroPic" :alt="title" class="hero-pic" />
