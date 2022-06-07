@@ -13,7 +13,7 @@
         :img-url="imgUrl"
       /> -->
       <BlogCard
-        v-for="blog in test"
+        v-for="blog in blogData"
         :key="blog.id"
         :title="blog.title"
         :excerpt="blog.description"
@@ -39,64 +39,7 @@ export default {
   components: { GridContainer, BlogCard },
   data() {
     return {
-      test: [],
-
-      blogData: [
-        {
-          title: 'The Three-body Problem in Software Development',
-          imgUrl:
-            'https://images.unsplash.com/photo-1638913974071-ad0045d13691?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074',
-          excerpt:
-            "From self-described free speech advocates like Elon Musk to more conscientious execs, the tech industry's silence is deafening",
-          date: 'May 17',
-          readTime: '8 min read',
-        },
-        {
-          title: 'The Three-body Problem in Software Development',
-          imgUrl:
-            'https://images.unsplash.com/photo-1638913974071-ad0045d13691?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074',
-          excerpt:
-            "From self-described free speech advocates like Elon Musk to more conscientious execs, the tech industry's silence is deafening",
-          date: 'May 17',
-          readTime: '8 min read',
-        },
-        {
-          title: 'The Three-body Problem in Software Development',
-          imgUrl:
-            'https://images.unsplash.com/photo-1638913974071-ad0045d13691?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074',
-          excerpt:
-            "From self-described free speech advocates like Elon Musk to more conscientious execs, the tech industry's silence is deafening",
-          date: 'May 17',
-          readTime: '8 min read',
-        },
-        {
-          title: 'The Three-body Problem in Software Development',
-          imgUrl:
-            'https://images.unsplash.com/photo-1638913974071-ad0045d13691?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074',
-          excerpt:
-            "From self-described free speech advocates like Elon Musk to more conscientious execs, the tech industry's silence is deafening",
-          date: 'May 17',
-          readTime: '8 min read',
-        },
-        {
-          title: 'The Three-body Problem in Software Development',
-          imgUrl:
-            'https://images.unsplash.com/photo-1638913974071-ad0045d13691?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074',
-          excerpt:
-            "From self-described free speech advocates like Elon Musk to more conscientious execs, the tech industry's silence is deafening",
-          date: 'May 17',
-          readTime: '8 min read',
-        },
-        {
-          title: 'The Three-body Problem in Software Development',
-          imgUrl:
-            'https://images.unsplash.com/photo-1638913974071-ad0045d13691?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074',
-          excerpt:
-            "From self-described free speech advocates like Elon Musk to more conscientious execs, the tech industry's silence is deafening",
-          date: 'May 17',
-          readTime: '8 min read',
-        },
-      ],
+      blogData: [],
       currentPage: 1,
     }
   },
@@ -113,9 +56,7 @@ export default {
           this.$axios
             .$get(`/api/Blog?page=${this.currentPage}`)
             .then(({ data }) => {
-              this.test = this.test.concat(data?.items)
-              // eslint-disable-next-line no-console
-              console.log({ data })
+              this.blogData = this.blogData.concat(data?.items)
               const meta = data?.meta
 
               const { totalPages } = meta

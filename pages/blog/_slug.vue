@@ -1,7 +1,8 @@
 <template>
   <article class="page-container">
     <BlogPage
-      :read-time="blog.readTime"
+      v-if="blog"
+      :read-time="`${blog.readTime}`"
       :created-at="$dateFns.format(blog.createdAt, 'PP')"
       :title="slug"
       :hero-pic="blog.heroImage.url"
@@ -17,17 +18,16 @@ export default {
   components: { BlogPage },
   async asyncData({ params, $axios }) {
     const { slug } = params
-
-    const { data } = await $axios.$get(`/api/Blog?titleName=${slug}`)
-
-    return {
-      slug,
-      blog: data?.items[0],
+    try {
+      const { data } = await $axios.$get(`/api/Blog?titleName=${slug}`)
+      return { blog: data?.items[0], slug }
+    } catch (error) {
+      console.log(error.response)
     }
   },
   data() {
     return {
-      blog: {},
+      error: false,
     }
   },
 
