@@ -2,7 +2,11 @@
   <div class="page-container">
     <div class="client-info-wrapper">
       <div class="img-wrapper">
-        <img :src="imgUrl" :alt="clientName" class="client-logo" />
+        <img
+          :src="clientInfo.clientLogo ? clientInfo.clientLogo : '/icon.png'"
+          :alt="clientName"
+          class="client-logo"
+        />
       </div>
       <div class="text-content">
         <h1 class="client-name">{{ clientName }}</h1>
@@ -10,12 +14,12 @@
           <p class="contact">
             <fa :icon="['fa', 'phone-flip']" />
             &ThinSpace;
-            {{ contact }}
+            {{ clientInfo.primaryPhoneNumber }}
           </p>
           <p class="location">
             <fa :icon="['fa', 'location-dot']" />
             &ThinSpace;
-            {{ location }}
+            {{ clientInfo.location }}
           </p>
         </div>
       </div>
@@ -52,16 +56,15 @@ export default {
   components: { MenuItem },
   async asyncData({ params, $axios }) {
     const { clientName } = params
-    const { data } = await $axios.$get('/api/menu/menuCategory')
+    const { data: menuData } = await $axios.$get('/api/menu/menuCategory')
 
-    // make api request according to the client name
-    // const { data: clientInfo } = await $axios.$get(
-    //   `/api/client-list?RestaurantName=${clientName}`
-    // )
+    const { data: clientData } = await $axios.$get(
+      `/api/client-list?RestaurantName=${clientName}`
+    )
 
-    // console.log({ clientInfo })
+    const clientInfo = clientData?.items[0]
 
-    const categories = data.map((el) => ({
+    const categories = menuData.map((el) => ({
       id: el.id,
       name: el.name,
     }))
@@ -71,6 +74,7 @@ export default {
       clientName,
       categories,
       dropdownCategories,
+      clientInfo,
     }
   },
   data() {
@@ -86,7 +90,6 @@ export default {
     const { data } = await this.$axios.$get(`/api/menu`)
     const menu = data?.items
 
-    console.log({ menu })
     this.menu = menu
   },
 
@@ -106,7 +109,6 @@ export default {
       const { data } = await this.$axios.$get(
         `/api/menu/?category=${categoryId}`
       )
-      console.log({ data, category, categoryId })
       this.menu = data?.items
     },
   },

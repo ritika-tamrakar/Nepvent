@@ -175,12 +175,12 @@ export default {
   .hero-pic-wrapper {
     margin-top: 1rem;
     overflow: hidden;
-    max-width: 760px;
-    max-height: 500px;
     .hero-pic {
+      max-width: 760px;
+      max-height: 500px;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
     }
   }

@@ -82,7 +82,10 @@ export default {
     0px 10.0416px 9.74184px rgba(55, 52, 169, 0.035);
   .img-wrapper {
     max-width: 240px;
-
+    min-height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .card-img {
       width: 100%;
       object-fit: contain;

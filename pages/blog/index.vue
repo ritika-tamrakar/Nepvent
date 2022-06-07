@@ -20,7 +20,7 @@
         :date="$dateFns.format(blog.createdAt, 'PP')"
         :read-time="`${blog.readTime} min read`"
         :category="blog.category.name"
-        :img-url="blog.image[0].url"
+        :img-url="blog.heroImage.url"
       />
     </GridContainer>
     <infinite-loading spinner="spiral" @infinite="infiniteScroll">

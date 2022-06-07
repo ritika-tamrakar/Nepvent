@@ -21,6 +21,7 @@
               :client-name="item.restaurantName"
               :contact="item.primaryPhoneNumber"
               :location="item.location"
+              :img-url="item.clientLogo ? item.clientLogo : '/icon.png'"
             />
           </div>
         </div>
@@ -206,6 +207,7 @@ export default {
 
   .title-wrapper {
     max-width: fit-content;
+    margin-top: 2rem;
     .title {
       font-weight: 400;
       font-size: 1.8rem;

@@ -4,7 +4,7 @@
       :read-time="blog.readTime"
       :created-at="$dateFns.format(blog.createdAt, 'PP')"
       :title="slug"
-      :hero-pic="blog.image[0].url"
+      :hero-pic="blog.heroImage.url"
       :description="blog.description"
       :html-string="blog.body"
     />
