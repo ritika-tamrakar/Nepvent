@@ -1,8 +1,6 @@
 <template>
   <main class="clients-container">
-    <div class="title-wrapper">
-      <h1 class="title">Brands we work with</h1>
-    </div>
+    <HeaderTitle title="Brands we work with" />
     <div v-if="clientList" class="sections-cards-wrapper">
       <div
         v-for="section in Object.keys(clientList)"
@@ -37,9 +35,10 @@
 
 <script>
 import ClientCard from '../../components/clients/ClientCard.vue'
+import HeaderTitle from '../../components/common/HeaderTitle.vue'
 export default {
   name: 'ClientsPage',
-  components: { ClientCard },
+  components: { ClientCard, HeaderTitle },
   data() {
     return {
       clientList: {
@@ -203,33 +202,6 @@ export default {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: left;
-  }
-
-  .title-wrapper {
-    max-width: fit-content;
-    margin-top: 2rem;
-    .title {
-      font-weight: 400;
-      font-size: 1.8rem;
-      line-height: 138.6%;
-      letter-spacing: 0.005em;
-      position: relative;
-
-      @include mq(md) {
-        font-size: 2.375rem;
-      }
-
-      &::after {
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        content: '';
-        width: 110%;
-        background-color: map-get($map: $colors, $key: highlight);
-        height: 5px;
-        border-radius: 10px;
-      }
-    }
   }
 }
 </style>
