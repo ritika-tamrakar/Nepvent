@@ -16,10 +16,11 @@
 import BlogPage from '../../components/blog/BlogPage.vue'
 export default {
   components: { BlogPage },
-  async asyncData({ params, $axios }) {
+  async asyncData({ params, $axios, context }) {
     const { slug } = params
     try {
       const { data } = await $axios.$get(`/api/Blog?titleName=${slug}`)
+
       return { blog: data?.items[0], slug }
     } catch (error) {
       console.log(error.response)

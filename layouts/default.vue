@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <NavBar />
+    <VueFbCustomerChat />
     <Nuxt class="content" />
     <FooterMain />
   </div>

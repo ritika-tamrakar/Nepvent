@@ -1,4 +1,9 @@
 export default {
+  server: {
+    port: 8000, // default: 3000
+    host: '0.0.0.0', // default: localhost,
+    timing: false,
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Nepvent Restaurant Management',
@@ -54,6 +59,7 @@ export default {
     '~/plugins/vue-select',
     '~plugins/vue-js-modal',
     { src: '~/plugins/vue-infinite-loading', ssr: false },
+    { src: '~/plugins/vue-fb-customer-chat.js', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -89,8 +95,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    // baseURL: 'http://192.168.1.64:3000',
-    baseURL: 'http://192.168.1.84:8080',
+    baseURL: 'http://192.168.1.132:3000',
+    // baseURL: 'http://192.168.1.84:8080',
   },
 
   // fontawsome
